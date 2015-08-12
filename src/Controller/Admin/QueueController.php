@@ -7,7 +7,7 @@ use Queue\Controller\AppController;
 
 class QueueController extends AppController {
 
-	public $modelClass = 'Queue.QueuedTask';
+	public $modelClass = 'Queue.QueuedTasks';
 
 	/**
 	 * QueueController::beforeFilter()
