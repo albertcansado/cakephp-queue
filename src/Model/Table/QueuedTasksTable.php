@@ -297,6 +297,7 @@ class QueuedTasksTable extends Table {
 			'id' => $id
 		];
 		return $this->updateAll($fields, $conditions);
+		return (bool)$this->updateAll($fields, $conditions);
 	}
 
 	/**
