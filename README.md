@@ -135,9 +135,9 @@ Also note that you dont need to add the type ("Task"): `cake Queue.Queue add Spe
 Custom tasks should be placed in src/Shell/Task.
 Tasks should be named `QueueSomethingTask.php` and implement a "QueueSomethingTask", keeping CakePHP naming conventions intact. Custom tasks should extend the `QueueTask` class (you will need to include this at the top of your custom task file: `use Queue\Shell\Task\QueueTask;`).
 
-Plugin tasks go in plugins/src/Shell/Task.
+Plugin tasks go in `plugins/src/Shell/Task`.
 
-A detailed Example task can be found in vendor/dereuromark/cakephp-queue/src/Shell/Task/QueueExampleTask.php inside this folder.
+A detailed Example task can be found in `vendor/dereuromark/cakephp-queue/src/Shell/Task/QueueExampleTask.php` inside this folder.
 
 ## Setting up the trigger cronjob
 As outlined in the [book](http://book.cakephp.org/3.0/en/console-and-shells/cron-jobs.html) you can easily set up a cronjob
