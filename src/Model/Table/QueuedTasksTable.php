@@ -260,9 +260,11 @@ class QueuedTasksTable extends Table {
 		// If the job had an existing fetched timestamp, increment the failure counter
 		if (in_array($data['id'], $wasFetched)) {
 			$data['failed']++;
+			$data['failed'] += 1;
 			$data['failure_message'] = 'Restart after timeout';
 			//$this->id = $data['id'];
 			$this->save($data, ['fieldList' => ['id', 'failed', 'failure_message']]);
+			$this->save($data);
 		}
 		//save last fetch by type for Rate Limiting.
 		$this->rateHistory[$data['jobtype']] = time();
