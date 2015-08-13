@@ -326,20 +326,17 @@ class QueuedTasksTable extends Table {
 	 * @param string $failureMessage Optional message to append to the failure_message field.
 	 * @return bool Success
 	 */
-	public function markJobFailed($id, $failureMessage = null) {
-		$db = $this->get($id);
-		if ($failureMessage === null) {
-			$failureMessage = $db->failure_message;
-		}
-		$fields = [
-			'failed' => 'failed + 1',
-			'failure_message' => $failureMessage,
-		];
-		$conditions = [
-			'id' => $id
-		];
-		return $this->updateAll($fields, $conditions);
-	}
+	 public function markJobFailed($id, $failureMessage = null) {
+ 		$db = $this->get($id);
+
+ 		if ($failureMessage !== null) {
+ 			$db->failure_message = $failureMessage;
+ 		}
+
+ 		$db->failed += 1;
+ 		$db->workerkey = null;
+ 		return (bool)$this->save($db);
+ 	}
 
 	/**
 	 * Return some statistics about unfinished jobs still in the Database.
